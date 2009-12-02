@@ -7,7 +7,8 @@ It's not impressive but it should run just fine.
 Running it
 ==========
 
-    % node main.js 7000 #werd #e
+    % node main.js 7000 mysuperbot werd
+    % node main.js 7001 mybetterbot e
 
 [node]: http://nodejs.org
 [irccat]: http://github.com/webs/irccat
