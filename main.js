@@ -9,4 +9,9 @@ var listen_port = process.ARGV[2];
 var username    = process.ARGV[3];
 var channel     = process.ARGV[4];
 
-new irccat.server(channel, username, listen_port);
+if(listen_port != null && username != null && channel != null) {
+  new irccat.server(channel, username, listen_port);
+} else {
+  var executable = [process.ARGV[0], process.ARGV[1]].join(' ')
+  sys.puts(executable + " port username channel");
+}
