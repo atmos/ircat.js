@@ -2,7 +2,7 @@
 
 var sys      = require('sys'),
     ircat    = require('../lib/ircat'),
-    optparse = require('../lib/ircat/optparse').OptionParser;
+    optparse = require('../lib/ircat/optparse').OptionParser
 
 var switches = [
   ['-h', '--help', 'Shows help sections'],
@@ -11,7 +11,7 @@ var switches = [
   ['-j', '--join CHANNEL', 'The channel to join'],
   ['-p', '--password [PASSWORD]', 'The channel password'],
   ['--port [PORT]', "The bot's listener port"]
-];
+]
 
 var parser  = new optparse(switches),
     options = { action: '',
@@ -38,7 +38,7 @@ parser.on('port', function(opt, port) {
   options.port = value
 })
 
-parser.parse(process.ARGV);
+parser.parse(process.ARGV)
 
 if(options.channel) {
   var socket = tcp.createConnection(options.port, options.host)
