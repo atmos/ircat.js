@@ -1,2 +1,37 @@
-#!/usr/bin/env bash
-node lib/ircat/main.js $@
+#!/usr/bin/env node
+// vim:ft=javascript
+
+var sys   = require('sys'),
+    ircat    = require('../lib/ircat'),
+    optparse = require('../lib/ircat/optparse').OptionParser;
+
+var switches = [
+  ['-h', '--help', 'Shows help sections'],
+  ['-u', '--username USERNAME', 'The username to use'],
+  ['-p', '--port [PORT]', 'The port to bind listen on, defaults to 4568']
+];
+
+var parser  = new optparse(switches),
+    options = { port: '4568' };
+
+parser.banner = 'Usage: ' + process.ARGV[1] + ' [option]'
+
+parser.on('username', function(opt, value) {
+  options.username = value
+})
+parser.on('channel', function(opt, value) {
+  options.port = value
+})
+
+parser.parse(process.ARGV);
+
+process.addListener('SIGINT', function() {
+  sys.puts("Got a SIGINT");
+  process.exit();
+})
+
+var server  = new ircat.create(options)
+if(options.username)
+  server.run()
+else
+  sys.puts(parser.toString()), process.exit(0)

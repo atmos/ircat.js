@@ -1,0 +1,55 @@
+#!/usr/bin/env node
+
+var sys      = require('sys'),
+    ircat    = require('../lib/ircat'),
+    optparse = require('../lib/ircat/optparse').OptionParser;
+
+var switches = [
+  ['-h', '--help', 'Shows help sections'],
+  ['-m', '--message MESSAGE', 'The message to send'],
+  ['-c', '--channel channel', 'The channel to message'],
+  ['-j', '--join CHANNEL', 'The channel to join'],
+  ['-p', '--password [PASSWORD]', 'The channel password'],
+  ['--port [PORT]', "The bot's listener port"]
+];
+
+var parser  = new optparse(switches),
+    options = { action: '',
+                message: '',
+                port: '4568',
+                hostname: '127.0.0.1' }
+
+parser.banner = 'Usage: ' + process.ARGV[1] + ' [option]'
+parser.on('join', function(opt, channel) {
+  options.action  = 'joinChannel'
+  options.channel = channel
+})
+parser.on('message', function(opt, message) {
+  options.action  = 'messageChannel'
+  options.message = message
+})
+parser.on('channel', function(opt, channel) {
+  options.channel = channel
+})
+parser.on('password', function(opt, password) {
+  options.password = password
+})
+parser.on('port', function(opt, port) {
+  options.port = value
+})
+
+parser.parse(process.ARGV);
+
+if(options.channel) {
+  var socket = tcp.createConnection(options.port, options.host)
+
+  socket.addListener("connect", function () {
+    sys.p('Sent ' + JSON.stringify(options))
+    this.write(JSON.stringify(options))
+    this.close()
+  })
+
+  socket.connect
+} else {
+  sys.puts(parser.toString()), process.exit(0)
+}
