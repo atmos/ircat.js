@@ -5,6 +5,8 @@ I figured [irccat][irccat] would be easy to implement in [node.js][node] as a me
 
 It's not impressive but it should run just fine, it has a little json API sorta thing now..
 
+You need the latest version of [node.js][node], 0.1.90.
+
 Running the Bot
 ===============
 

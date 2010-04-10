@@ -1,4 +1,4 @@
 ---
   name: ircat
   description: Simple IRC bot you pipe message to
-  version: 0.0.4
+  version: 0.0.5
