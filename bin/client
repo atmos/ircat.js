@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 
 var sys      = require('sys'),
-    ircat    = require('../lib/ircat'),
-    optparse = require('../lib/ircat/optparse').OptionParser
+    net      = require('net'),
+    kiwi     = require('kiwi'),
+    ircat    = require('../lib/ircat')
+
+var optparse = kiwi.require('optparse').OptionParser
 
 var switches = [
   ['-h', '--help', 'Shows help sections'],
@@ -16,7 +19,7 @@ var switches = [
 var parser  = new optparse(switches),
     options = { action: '',
                 message: '',
-                port: '4568',
+                port: 4568,
                 hostname: '127.0.0.1' }
 
 parser.banner = 'Usage: ' + process.ARGV[1] + ' [option]'
@@ -41,12 +44,12 @@ parser.on('port', function(opt, port) {
 parser.parse(process.ARGV)
 
 if(options.channel) {
-  var socket = tcp.createConnection(options.port, options.host)
+  var socket = net.createConnection(options.port, options.host)
 
   socket.addListener("connect", function () {
     sys.p('Sent ' + JSON.stringify(options))
     this.write(JSON.stringify(options))
-    this.close()
+    this.end()
   })
 
   socket.connect

@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
-var sys   = require('sys'),
-    ircat    = require('../lib/ircat'),
-    optparse = require('../lib/ircat/optparse').OptionParser
+var sys      = require('sys'),
+    kiwi     = require('kiwi'),
+    ircat    = require('../lib/ircat')
+
+var optparse = kiwi.require('optparse').OptionParser
 
 var switches = [
   ['-h', '--help', 'Shows help sections'],
@@ -11,7 +13,7 @@ var switches = [
 ]
 
 var parser  = new optparse(switches),
-    options = { port: '4568' }
+    options = { port: 4568, hostname: 'localhost' }
 
 parser.banner = 'Usage: ' + process.ARGV[1] + ' [option]'
 
