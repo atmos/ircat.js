@@ -1,0 +1,21 @@
+{
+  "name": "ircat.js",
+  "description": "A simple IRC bot you pipe messages to",
+  "version": "0.1.0",
+  "keywords": [ "irc", "bot" ],
+  "dependencies": {},
+
+  "author": "Corey Donohoe <atmos@atmos.org>",
+  "contributors": [
+    { "name": "Corey Donohoe", "web": "http://www.atmos.org" }
+  ],
+  "repositories": [ {
+    "type": "git",
+    "url": "http://github.com/atmos/ircat.js"
+  } ],
+  "directories": [ { "lib": "./lib" } ],
+  "bugs": { "web": "http://github.com/atmos/ircat.js/issues" },
+  "licenses": [ "MIT" ],
+  "os": [ "linux", "darwin" ],
+  "engines": { "node":  ">0.1.90" }
+}

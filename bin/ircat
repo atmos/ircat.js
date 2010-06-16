@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
 var sys      = require('sys'),
-    kiwi     = require('kiwi'),
     ircat    = require('../lib/ircat')
 
-var optparse = kiwi.require('optparse').OptionParser
+var optparse = require('optparse').OptionParser
 
 var switches = [
   ['-h', '--help', 'Shows help sections'],

@@ -2,10 +2,8 @@
 
 var sys      = require('sys'),
     net      = require('net'),
-    kiwi     = require('kiwi'),
-    ircat    = require('../lib/ircat')
 
-var optparse = kiwi.require('optparse').OptionParser
+var optparse = require('optparse').OptionParser
 
 var switches = [
   ['-h', '--help', 'Shows help sections'],
